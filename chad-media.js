@@ -11,7 +11,7 @@
 (function() {
     'use strict';
 
-    const virgins = Array.from(document.querySelectorAll('a, h3, p, span, strong'))
+    const virgins = Array.from(document.querySelectorAll('a, h1, h2, h3, h4, h5, h6, p, span, strong'))
         .filter(el => el.innerText.toLowerCase().includes('virgin'));
 
     for (const virgin of virgins) {
