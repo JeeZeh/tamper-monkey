@@ -8,17 +8,21 @@
 // @grant        none
 // ==/UserScript== 
 
-(function () {
+cleanModuleNames();
+
+/**
+ * Changes the ugly module code titles to their full module name, stripping the (YEAR:SEMESTER) at the end.
+ */
+function cleanModuleNames() {
     const courseListIds = ['#block-mycourselist-past', '#block-mycourselist-current', '#block-mycourselist-future'];
     const courseLists = document.querySelectorAll(courseListIds.map(element => `${element} .course_title a[title]`).join(', '));
     for (const course of courseLists) {
         course.innerText = trimModule(course.title);
     }
+}
 
-    function trimModule(title) {
-        const cutPoint = title.indexOf('(2019');
+function trimModule(title) {
+    const cutPoint = title.indexOf('(2019');
 
-        return title.substring(0, cutPoint);
-    }
-
-})();
+    return title.substring(0, cutPoint);
+}
