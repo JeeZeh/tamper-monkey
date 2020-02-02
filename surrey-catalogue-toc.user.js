@@ -10,8 +10,8 @@
 // @grant        GM_xmlhttpRequest
 // @connect      githubusercontent.com
 // @connect      raw.githubusercontent.com
-// @updateURL    https://raw.githubusercontent.com/JeeZeh/tamper-monkey/master/surrey-catalogue-toc.js
-// @downloadURL  https://raw.githubusercontent.com/JeeZeh/tamper-monkey/master/surrey-catalogue-toc.js
+// @updateURL    https://raw.githubusercontent.com/JeeZeh/tamper-monkey/master/surrey-catalogue-toc.user.js
+// @downloadURL  https://raw.githubusercontent.com/JeeZeh/tamper-monkey/master/surrey-catalogue-toc.user.js
 // @homepageURL  https://github.com/JeeZeh/tamper-monkey
 // ==/UserScript==
 
