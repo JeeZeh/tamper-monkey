@@ -26,7 +26,7 @@ function generateCategories(selector) {
 
     for (const c of categories) {
         c.original = c.innerText
-        c.innerHTML = `<a name="${c.innerText.replace(' ', '')}"></a>${c.innerHTML} <span class="small"> • <a href="#toc">Top<a/></span>`;
+        c.innerHTML = `<a name="${c.innerText.replace(' ', '')}"></a>${c.innerHTML} <span class="small"> • <a href="#toc">Back to ToC<a/></span>`;
     }
 
     return categories
