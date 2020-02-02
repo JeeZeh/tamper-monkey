@@ -1,21 +1,21 @@
 // ==UserScript==
 // @name         Univeristy of Surrey Catalogue ToC
 // @namespace    https://github.com/JeeZeh/tamper-monkey
-// @version      1.0
+// @version      1.0.1
 // @description  Adds a table of contents to Surrey University's Module catalogue
 // @author       https://jeezeh.github.io
 // @match        https://catalogue.surrey.ac.uk/*/module/*
-// @include     https://*.githubusercontent.com/*
-// @grant       GM.xmlHttpRequest
-// @grant       GM_xmlhttpRequest
-// @connect     githubusercontent.com
-// @connect     raw.githubusercontent.com
-// @updateURL   https://raw.githubusercontent.com/JeeZeh/tamper-monkey/master/surrey-catalogue-toc.js
-// @downloadURL https://raw.githubusercontent.com/JeeZeh/tamper-monkey/master/surrey-catalogue-toc.js
-// @homepageURL https://github.com/JeeZeh/tamper-monkey
+// @include      https://*.githubusercontent.com/*
+// @grant        GM.xmlHttpRequest
+// @grant        GM_xmlhttpRequest
+// @connect      githubusercontent.com
+// @connect      raw.githubusercontent.com
+// @updateURL    https://raw.githubusercontent.com/JeeZeh/tamper-monkey/master/surrey-catalogue-toc.js
+// @downloadURL  https://raw.githubusercontent.com/JeeZeh/tamper-monkey/master/surrey-catalogue-toc.js
+// @homepageURL  https://github.com/JeeZeh/tamper-monkey
 // ==/UserScript==
 
-addToC();
+main();
 
 function generateCategories(selector) {
     if (!selector) {
@@ -57,7 +57,7 @@ function generateToC(categories) {
     return toc;
 }
 
-function addToC() {
+function main() {
     const categories = generateCategories('.h2');
     const toc = generateToC(categories);
     
