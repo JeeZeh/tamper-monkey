@@ -1,11 +1,18 @@
 // ==UserScript==
 // @name         Mudle Enhancer
-// @namespace    https://github.com/JeeZeh/tamper-monkey/blob/master/mudle-enhancer.js
-// @version      1.0
+// @namespace    https://github.com/JeeZeh/tamper-monkey/
+// @version      1.0.1
 // @description  Enhancements for Maynooth University's 2019-2020 Moodle Dashboard
 // @author       https://jeezeh.github.io
 // @match        https://2020.moodle.maynoothuniversity.ie/*
-// @grant        none
+// @include      https://*.githubusercontent.com/*
+// @grant        GM.xmlHttpRequest
+// @grant        GM_xmlhttpRequest
+// @connect      githubusercontent.com
+// @connect      raw.githubusercontent.com
+// @updateURL    https://raw.githubusercontent.com/JeeZeh/tamper-monkey/master/mudle-enhancer.user.js
+// @downloadURL  https://raw.githubusercontent.com/JeeZeh/tamper-monkey/master/mudle-enhancer.user.js
+// @homepageURL  https://github.com/JeeZeh/tamper-monkey
 // ==/UserScript==
 
 cleanModuleNames();
