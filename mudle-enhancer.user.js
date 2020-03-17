@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Mudle Enhancer
+// @name         MUdle Enhancer
 // @namespace    https://github.com/JeeZeh/tamper-monkey/
-// @version      1.0.1
+// @version      2.0.0
 // @description  Enhancements for Maynooth University's 2019-2020 Moodle Dashboard
 // @author       https://jeezeh.github.io
 // @match        https://2020.moodle.maynoothuniversity.ie/*
@@ -14,6 +14,17 @@
 // @downloadURL  https://raw.githubusercontent.com/JeeZeh/tamper-monkey/master/mudle-enhancer.user.js
 // @homepageURL  https://github.com/JeeZeh/tamper-monkey
 // ==/UserScript==
+
+
+/* ----------------------------------------------------------------- */
+
+/*
+ * Clean up module names
+ * Replaces "(Year:Semester)" with the title of the module 
+ */
+
+ /* ----------------------------------------------------------------- */
+
 
 cleanModuleNames();
 
@@ -33,4 +44,67 @@ function trimModule(title) {
     }
 
     return title;
+}
+
+/* ----------------------------------------------------------------- */
+
+/* 
+ * Creates and handles task/assignment hiding 
+ * Requires localStorage, might be cleared at somepoint...
+ */
+
+ /* ----------------------------------------------------------------- */
+
+
+let TASKS_DB = JSON.parse(localStorage.getItem('tasks'));
+let LIVE_TASKS = document.querySelectorAll('.mytasks > .taskrow');
+syncTasks();
+
+
+function syncTasks() {
+    if (TASKS_DB == null) TASKS_DB = {};
+    LIVE_TASKS.forEach(addCheckbox);
+    console.log(TASKS_DB);
+    localStorage.setItem('tasks', JSON.stringify(TASKS_DB));
+}
+
+function addCheckbox(task) {
+    const taskId = serialiseTask(task);
+    let check = document.getElementById(taskId);
+    if (check == null) {
+        check = document.createElement('input');
+        check.setAttribute('type', 'checkbox');
+        check.id = taskId;
+        check.addEventListener('click', () => toggleTask(taskId));
+        check.style.margin = '5px';
+        task.querySelector('.media').prepend(check);
+    }
+
+    check.checked = TASKS_DB.hasOwnProperty(taskId);
+    if (check.checked) {
+        task.style.opacity = 0.2;
+    } else {
+        task.style.removeProperty('opacity');
+    } 
+}
+
+function toggleTask(taskId) {
+    if (TASKS_DB == null) return;
+    console.log(`Toggling ${taskId}`);
+
+    if (TASKS_DB.hasOwnProperty(taskId)) {
+        delete TASKS_DB[taskId];
+    } else {
+        TASKS_DB[taskId] = true;
+    }
+    syncTasks();
+}
+
+function serialiseTask(task) {
+    let urlParts = task.querySelector('.pull-left').getAttribute('href').split('?id=');
+    let potentialId = parseInt(urlParts[1]);
+    if (!isNaN(potentialId)) return `task_${potentialId}`;
+    
+    console.error('Could not parse task id', task);
+    return null;
 }
