@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MUdle Enhancer
 // @namespace    https://github.com/JeeZeh/tamper-monkey/
-// @version      2.0.1
+// @version      2.1.0
 // @description  Enhancements for Maynooth University's 2019-2020 Moodle Dashboard
 // @author       https://jeezeh.github.io
 // @match        https://2020.moodle.maynoothuniversity.ie/*
@@ -27,8 +27,16 @@
 cleanModuleNames();
 
 function cleanModuleNames() {
-    const courseListIds = ['#block-mycourselist-past', '#block-mycourselist-current', '#block-mycourselist-future'];
-    const courseLists = document.querySelectorAll(courseListIds.map(element => `${element} .course_title a[title]`).join(', '));
+    const courseListIds = [
+        '#block-mycourselist-past',
+        '#block-mycourselist-current',
+        '#block-mycourselist-future'
+    ];
+
+    const courseLists = document.querySelectorAll(courseListIds
+        .map(element => `${element} .course_title a[title]`).join(', ')
+    );
+
     for (const course of courseLists) {
         course.innerText = trimModule(course.title);
     }
@@ -77,11 +85,12 @@ function addCheckbox(task) {
     }
 
     check.checked = TASKS_DB.hasOwnProperty(taskId);
+    task.querySelectorAll('.taskcoursename, .taskdate').forEach(e => e.hidden = check.checked);
     if (check.checked) {
         task.style.opacity = 0.2;
     } else {
         task.style.removeProperty('opacity');
-    } 
+    }
 }
 
 function toggleTask(taskId) {
@@ -100,7 +109,7 @@ function serialiseTask(task) {
     let urlParts = task.querySelector('.pull-left').getAttribute('href').split('?id=');
     let potentialId = parseInt(urlParts[1]);
     if (!isNaN(potentialId)) return `task_${potentialId}`;
-    
+
     console.error('Could not parse task id', task);
     return null;
 }
