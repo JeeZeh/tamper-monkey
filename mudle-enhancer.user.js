@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MUdle Enhancer
 // @namespace    https://github.com/JeeZeh/tamper-monkey/
-// @version      2.0.0
+// @version      2.0.1
 // @description  Enhancements for Maynooth University's 2019-2020 Moodle Dashboard
 // @author       https://jeezeh.github.io
 // @match        https://2020.moodle.maynoothuniversity.ie/*
@@ -16,14 +16,12 @@
 // ==/UserScript==
 
 
-/* ----------------------------------------------------------------- */
-
-/*
+/* ----------------------------------------------------------------- 
+ *
  * Clean up module names
  * Replaces "(Year:Semester)" with the title of the module 
- */
-
- /* ----------------------------------------------------------------- */
+ *
+ * ----------------------------------------------------------------- */
 
 
 cleanModuleNames();
@@ -46,14 +44,12 @@ function trimModule(title) {
     return title;
 }
 
-/* ----------------------------------------------------------------- */
-
-/* 
+/* ----------------------------------------------------------------- 
+ * 
  * Creates and handles task/assignment hiding 
  * Requires localStorage, might be cleared at somepoint...
- */
-
- /* ----------------------------------------------------------------- */
+ * 
+ * ----------------------------------------------------------------- */
 
 
 let TASKS_DB = JSON.parse(localStorage.getItem('tasks'));
