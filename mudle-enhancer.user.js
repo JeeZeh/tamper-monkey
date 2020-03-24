@@ -43,9 +43,9 @@ function cleanModuleNames() {
 }
 
 function trimModule(title) {
-    const cutPoint = title.indexOf('(2019');
+    const semesterMatch = title.match(/\s\(\d*-\d*:[\w\d\s-]*\)/);
 
-    return title.substring(0, cutPoint > 0 ? cutPoint : undefined);
+    return title.substring(0, semesterMatch ? semesterMatch.index : undefined)
 }
 
 /* ----------------------------------------------------------------- 
