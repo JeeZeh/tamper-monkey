@@ -20,6 +20,7 @@
  *
  * Clean up module names
  * Replaces "(Year:Semester)" with the title of the module 
+ * and removes [X] from after module codes
  *
  * ----------------------------------------------------------------- */
 
