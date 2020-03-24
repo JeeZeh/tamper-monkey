@@ -45,7 +45,9 @@ function cleanModuleNames() {
 function trimModule(title) {
     const semesterMatch = title.match(/\s\(\d*-\d*:[\w\d\s-]*\)/);
 
-    return title.substring(0, semesterMatch ? semesterMatch.index : undefined)
+    return title
+        .substring(0, semesterMatch ? semesterMatch.index : undefined)
+        .replace(/\[\w\]/, "");
 }
 
 /* ----------------------------------------------------------------- 
