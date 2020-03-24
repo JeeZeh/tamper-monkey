@@ -45,7 +45,7 @@ function cleanModuleNames() {
 function trimModule(title) {
     const cutPoint = title.indexOf('(2019');
 
-    return title.substring(0, cutPoint > 0 ? cutPoint : null);
+    return title.substring(0, cutPoint > 0 ? cutPoint : undefined);
 }
 
 /* ----------------------------------------------------------------- 
