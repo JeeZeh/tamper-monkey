@@ -2,9 +2,9 @@
 // @name         MUdle Enhancer
 // @namespace    https://github.com/JeeZeh/tamper-monkey/
 // @version      2.1.0
-// @description  Enhancements for Maynooth University's 2019-2020 Moodle Dashboard
+// @description  Enhancements for Maynooth University's Moodle Dashboard
 // @author       https://jeezeh.github.io
-// @match        https://2020.moodle.maynoothuniversity.ie/*
+// @match        https://*.moodle.maynoothuniversity.ie/*
 // @include      https://*.githubusercontent.com/*
 // @grant        GM.xmlHttpRequest
 // @grant        GM_xmlhttpRequest
