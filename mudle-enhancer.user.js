@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MUdle Enhancer
 // @namespace    https://github.com/JeeZeh/tamper-monkey/
-// @version      2.1.0
+// @version      2.2.0
 // @description  Enhancements for Maynooth University's Moodle Dashboard
 // @author       https://jeezeh.github.io
 // @match        https://*.moodle.maynoothuniversity.ie/*
