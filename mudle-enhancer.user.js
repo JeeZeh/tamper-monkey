@@ -20,6 +20,7 @@
  *
  * Clean up module names
  * Replaces "(Year:Semester)" with the title of the module 
+ * and removes [X] from after module codes
  *
  * ----------------------------------------------------------------- */
 
@@ -43,13 +44,11 @@ function cleanModuleNames() {
 }
 
 function trimModule(title) {
-    const cutPoint = title.indexOf('(2019');
+    const semesterMatch = title.match(/\s\(\d*-\d*:[\w\d\s-]*\)/);
 
-    if (cutPoint > 0) {
-        return title.substring(0, cutPoint > 0 ? cutPoint : null);
-    }
-
-    return title;
+    return title
+        .substring(0, semesterMatch ? semesterMatch.index : undefined)
+        .replace(/\[\w\]/, "");
 }
 
 /* ----------------------------------------------------------------- 
