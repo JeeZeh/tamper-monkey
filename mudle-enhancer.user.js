@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         MUdle Enhancer
 // @namespace    https://github.com/JeeZeh/tamper-monkey/
-// @version      2.1.0
-// @description  Enhancements for Maynooth University's 2019-2020 Moodle Dashboard
+// @version      2.2.0
+// @description  Enhancements for Maynooth University's Moodle Dashboard
 // @author       https://jeezeh.github.io
-// @match        https://2020.moodle.maynoothuniversity.ie/*
+// @match        https://*.moodle.maynoothuniversity.ie/*
 // @include      https://*.githubusercontent.com/*
 // @grant        GM.xmlHttpRequest
 // @grant        GM_xmlhttpRequest
@@ -20,6 +20,7 @@
  *
  * Clean up module names
  * Replaces "(Year:Semester)" with the title of the module 
+ * and removes [X] from after module codes
  *
  * ----------------------------------------------------------------- */
 
@@ -43,13 +44,11 @@ function cleanModuleNames() {
 }
 
 function trimModule(title) {
-    const cutPoint = title.indexOf('(2019');
+    const semesterMatch = title.match(/\s\(\d*-\d*:[\w\d\s-]*\)/);
 
-    if (cutPoint > 0) {
-        return title.substring(0, cutPoint > 0 ? cutPoint : null);
-    }
-
-    return title;
+    return title
+        .substring(0, semesterMatch ? semesterMatch.index : undefined)
+        .replace(/\[\w\]/, "");
 }
 
 /* ----------------------------------------------------------------- 
