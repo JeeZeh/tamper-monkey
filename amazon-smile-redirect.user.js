@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Amazon Smile Auto Redirect
 // @namespace    https://github.com/JeeZeh/tamper-monkey
-// @version      1.0.0
+// @version      1.0.1
 // @description  If you always forget to use smile.amazon.* then this is for you! Redirects automatically if you every navigate to www.amazon.*. There may be bugs, haven't found any yet.
 // @author       https://jeezeh.github.io
 // @match        https://www.amazon.*
@@ -15,6 +15,6 @@
 // @homepageURL  https://github.com/JeeZeh/tamper-monkey
 // ==/UserScript==
 
-if (window.location.host.startsWith("www.amazon.")) {
+(() => {if (window.location.host.startsWith("www.amazon.")) {
     window.location.replace(window.location.href.replace("www.amazon.", "smile.amazon."));
-}
+}})()
