@@ -5,6 +5,7 @@
 // @description  If you always forget to use smile.amazon.* then this is for you! Redirects automatically if you every navigate to www.amazon.*. There may be bugs, haven't found any yet.
 // @author       https://jeezeh.github.io
 // @include      https://www.amazon.tld/*
+// @exclude      https://www.amazon.jobs/*
 // @include      https://*.githubusercontent.com/*
 // @grant        GM.xmlHttpRequest
 // @grant        GM_xmlhttpRequest
